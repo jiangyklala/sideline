@@ -3,6 +3,7 @@ package com.jxm.sideline.config;
 import com.baomidou.mybatisplus.generator.FastAutoGenerator;
 import com.baomidou.mybatisplus.generator.config.TemplateType;
 import com.baomidou.mybatisplus.generator.engine.FreemarkerTemplateEngine;
+import org.springframework.beans.factory.annotation.Value;
 
 /**
  * @author jiangyunkai <jiangyunkai@kuaishou.com>
@@ -12,9 +13,12 @@ public class FastAutoGeneratorConfig {
 
     private static final String TABLE_NAME = "wx_user_info";
 
-    private static final String DATABASE_URL = "jdbc:mysql://101.34.84.186:3306/sideline_dev?characterEncoding=UTF8&autoReconnect=true&serverTimezone=Asia/Shanghai";
-    private static final String USERNAME = "sl_dev";
-    private static final String PASSWORD = "uUmsdf238Fsfd2";
+    @Value("${spring.datasource.url}")
+    private static String DATABASE_URL;
+    @Value("${spring.datasource.username}")
+    private static String USERNAME;
+    @Value("${spring.datasource.password}")
+    private static String PASSWORD;
 
     public static void main(String[] args) {
         // 使用 FastAutoGenerator 快速配置代码生成器
